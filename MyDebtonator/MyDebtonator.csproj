@@ -57,6 +57,7 @@
     <Compile Include="Models\PaymentModel.cs" />
     <Compile Include="Models\PaymentPlanModel.cs" />
     <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Views\BlankWindow.xaml.cs">
       <DependentUpon>BlankWindow.xaml</DependentUpon>
     </Compile>

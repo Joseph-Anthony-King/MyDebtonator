@@ -175,5 +175,108 @@ namespace MyDebtonator.Models
         }
 
         #endregion
+
+        #region Constructors
+
+        public UserModel()
+        {
+            UserName = string.Empty;
+            Password = string.Empty;
+
+            MonthlyNetIncome = 0.0;
+            TotalInterest = 0.0;
+            TotalPayments = 0.0;
+
+            EarliestPaymentDueDate = new DateTime(2000, 1, 1);
+            LatestPaymentDueDate = new DateTime(2099, 12, 31);
+            TotalPaidPerMonth = 0.0;
+            AverageMonthlyPayment = 0.0;
+
+            DebtPercentage = 0.0;
+
+            Plans = new List<PaymentPlanModel>();
+        }
+
+        public UserModel(string name, string password, Double income) : this()
+        {
+            UserName = name;
+            Password = password;
+
+            MonthlyNetIncome = income;
+        }
+
+        #endregion
+
+        #region Methods
+
+        // Adds a plan.
+        public void AddPlan(PaymentPlanModel plan)
+        {
+            Plans.Add(plan);
+
+            UpdateUser();
+        }
+
+        // Deletes a plan.
+        public void DeletePlan(PaymentPlanModel plan)
+        {
+            Plans.Remove(plan);
+
+            UpdateUser();
+        }
+
+        // Updates a user.
+        public void UpdateUser()
+        {
+            TotalPrincipal = 0.0;
+            TotalInterest = 0.0;
+            TotalPayments = 0.0;
+            EarliestPaymentDueDate = DateTime.MinValue;
+            LatestPaymentDueDate = DateTime.MinValue;
+            TotalPaidPerMonth = 0.0;
+            AverageMonthlyPayment = 0.0;
+            DebtPercentage = 0.0;
+
+            if (Plans.Count > 0)
+            {
+                foreach (PaymentPlanModel p in Plans)
+                {
+                    TotalPrincipal = TotalPrincipal + p.Principal;
+                    TotalInterest = TotalInterest + p.Interest;
+                    TotalPayments = TotalPayments + p.Principal + p.Interest;
+
+                    if (EarliestPaymentDueDate == DateTime.MinValue)
+                    {
+                        EarliestPaymentDueDate = p.FirstPaymentDueDate;
+                    }
+                    else
+                    {
+                        if (p.FirstPaymentDueDate < EarliestPaymentDueDate)
+                        {
+                            EarliestPaymentDueDate = p.FirstPaymentDueDate;
+                        }
+                    }
+
+                    TotalPaidPerMonth = TotalPaidPerMonth + p.MonthlyPayment;
+                }
+            }
+
+            AverageMonthlyPayment = TotalPaidPerMonth / Plans.Count;
+
+            AverageMonthlyPayment = Math.Round(AverageMonthlyPayment, 2);
+
+            DebtPercentage = Math.Round((TotalPaidPerMonth / MonthlyNetIncome), 4);
+        }
+
+        // Update the properties of a user based on new entries
+        public void UpdateUsersState(string name, string password, Double netMonthlyIncome)
+        {
+            this.UserName = name;
+            this.Password = password;
+            this.MonthlyNetIncome = netMonthlyIncome;
+            this.DebtPercentage = TotalPaidPerMonth / MonthlyNetIncome;
+        }
+
+        #endregion
     }
 }
