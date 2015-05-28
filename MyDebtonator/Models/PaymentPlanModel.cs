@@ -212,7 +212,7 @@ namespace MyDebtonator.Models
 
             this._monthlyRateExceedsMonthlyPayment = false;
 
-            this.PaymentSchedule = new List<PaymentModel>();
+            this.PaymentSchedule = new ObservableCollection<PaymentModel>();
         }
 
         public PaymentPlanModel(string name, Double principal, Double apr, DateTime firstPaymentDate) : 
@@ -255,7 +255,7 @@ namespace MyDebtonator.Models
             this.MonthlyRate = (Double)info.GetValue("MonthlyRate", typeof(Double));
             this.Months = (int)info.GetValue("Months", typeof(int));
             this._monthlyRateExceedsMonthlyPayment = (bool)info.GetValue("_montlyRateExceedsMonthlyPayment", typeof(bool));
-            this.PaymentSchedule = (List<PaymentModel>)info.GetValue("PaymentSchedule", typeof(List<PaymentModel>));
+            this.PaymentSchedule = (ObservableCollection<PaymentModel>)info.GetValue("PaymentSchedule", typeof(ObservableCollection<PaymentModel>));
         }
 
         #endregion
@@ -375,9 +375,9 @@ namespace MyDebtonator.Models
         }
 
         // This method creates the payment schedule.
-        public List<PaymentModel> CreatePaymentSchedule()
+        public ObservableCollection<PaymentModel> CreatePaymentSchedule()
         {
-            List<PaymentModel> paymentSchedule = new List<PaymentModel>();
+            ObservableCollection<PaymentModel> paymentSchedule = new ObservableCollection<PaymentModel>();
 
             DateTime dueDate = FirstPaymentDueDate;
 
@@ -416,7 +416,7 @@ namespace MyDebtonator.Models
             info.AddValue("APR", this.APR);
             info.AddValue("MonthlyRate", this.MonthlyRate);
             info.AddValue("Months", this.Months);
-            info.AddValue("MonthlyRateExceedsMonthlyPayment", this.MonthlyRateExceedsMonthlyPayment);
+            info.AddValue("_monthlyRateExceedsMonthlyPayment", this._monthlyRateExceedsMonthlyPayment);
             info.AddValue("PaymentSchedule", this.PaymentSchedule);
         }
 
@@ -424,7 +424,7 @@ namespace MyDebtonator.Models
 
         #region IComparer Members
 
-        public int Compare(PaymentPlan x, PaymentPlan y)
+        public int Compare(PaymentPlanModel x, PaymentPlanModel y)
         {
             return string.Compare(x.PaymentPlanName, y.PaymentPlanName);
         }

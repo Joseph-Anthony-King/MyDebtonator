@@ -194,7 +194,7 @@ namespace MyDebtonator.Models
 
             DebtPercentage = 0.0;
 
-            Plans = new List<PaymentPlanModel>();
+            Plans = new ObservableCollection<PaymentPlanModel>();
         }
 
         public UserModel(string name, string password, Double income) : this()

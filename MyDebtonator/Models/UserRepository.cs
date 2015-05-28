@@ -34,12 +34,12 @@ namespace MyDebtonator.Models
 
         public UserRepository()
         {
-            savedUsers = new List<UserModel>();
+            savedUsers = new ObservableCollection<UserModel>();
         }
 
         public UserRepository(SerializationInfo info, StreamingContext context)
         {
-            this.SavedUsers = (List<UserModel>)info.GetValue("SavedUsers.dat", typeof(List<UserModel>));
+            this.SavedUsers = (ObservableCollection<UserModel>)info.GetValue("SavedUsers.dat", typeof(ObservableCollection<UserModel>));
         }
 
         #endregion
