@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using MyDebtonator.Helpers;
@@ -13,9 +14,9 @@ namespace MyDebtonator.Models
     {
         #region Fields and Properties
 
-        private List<UserModel> savedUsers;
+        private ObservableCollection<UserModel> savedUsers;
 
-        public List<UserModel> SavedUsers
+        public ObservableCollection<UserModel> SavedUsers
         {
             get 
             { 
@@ -24,7 +25,6 @@ namespace MyDebtonator.Models
             set 
             { 
                 this.savedUsers = value;
-                OnPropertyChanged("SavedUsers");
             }
         }
 

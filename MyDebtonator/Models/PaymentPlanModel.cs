@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using MyDebtonator.Helpers;
@@ -26,7 +27,7 @@ namespace MyDebtonator.Models
         private Double _apr;
         private Double _monthlyRate;
         private int _months;
-        private List<PaymentModel> _paymentSchedule;
+        private ObservableCollection<PaymentModel> _paymentSchedule;
 
         #endregion
 
@@ -175,7 +176,7 @@ namespace MyDebtonator.Models
             }
         }
 
-        public List<PaymentModel> PaymentSchedule
+        public ObservableCollection<PaymentModel> PaymentSchedule
         {
             get
             {
@@ -184,7 +185,6 @@ namespace MyDebtonator.Models
             set
             {
                 this._paymentSchedule = value;
-                OnPropertyChanged("PaymentSchedule");
             }
         }
 

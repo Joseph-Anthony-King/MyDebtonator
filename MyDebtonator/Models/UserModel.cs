@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using MyDebtonator.Helpers;
@@ -23,7 +24,7 @@ namespace MyDebtonator.Models
         private Double _totalPaidPerMonth;
         private Double _averageMonthlyPayment;
         private Double _debtPercentage;
-        private List<PaymentPlanModel> _plans;
+        private ObservableCollection<PaymentPlanModel> _plans;
 
         #endregion
 
@@ -161,7 +162,7 @@ namespace MyDebtonator.Models
             }
         }
 
-        public List<PaymentPlanModel> Plans
+        public ObservableCollection<PaymentPlanModel> Plans
         {
             get
             {
@@ -170,7 +171,6 @@ namespace MyDebtonator.Models
             set
             {
                 this._plans = value;
-                OnPropertyChanged("Plans");
             }
         }
 
