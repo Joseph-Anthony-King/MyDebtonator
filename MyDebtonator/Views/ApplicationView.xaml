@@ -1,0 +1,62 @@
+﻿<Window x:Class="MyDebtonator.Views.ApplicationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="My Debtonator" 
+        Height="768" 
+        Width="768"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanMinimize" 
+        Background="WhiteSmoke">
+    <Grid>
+        <!--Menu-->
+        <Menu
+            Name="menuMain"
+            Height="50"
+            Width="770"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Foreground="WhiteSmoke"
+            FlowDirection="LeftToRight"
+            HorizontalContentAlignment="Left">
+            <Menu.Background>
+                <LinearGradientBrush 
+                    EndPoint="0.5,1" 
+                    StartPoint="0.5,0">
+                    <GradientStop 
+                        Color="#FF0C4904" 
+                        Offset="0" />
+                    <GradientStop 
+                        Color="#FF1FCB0A"
+                        Offset="1" />
+                    <GradientStop 
+                        Color="#FF168608"
+                        Offset="0.575" />
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem>
+                <MenuItem.Icon>
+                    <Image Source="/MyDebtonator;component/Images/Debtonator.gif" />
+                </MenuItem.Icon>
+                <MenuItem 
+                    Name="mniCalculator" 
+                    Header="Calculator" 
+                    Foreground="Black" 
+                    FontSize="16" />
+                <MenuItem 
+                    Name="mniAbout"
+                    Header="About My Debtonator"
+                    Foreground="Black"
+                    FontSize="16" />
+                <Separator />
+                <MenuItem 
+                    Name="mniExitApplication" 
+                    Header="Exit Application" 
+                    Foreground="Black" 
+                    FontSize="16" />
+            </MenuItem>
+        </Menu>
+        
+        <ContentControl />
+    </Grid>
+</Window>

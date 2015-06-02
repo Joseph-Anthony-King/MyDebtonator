@@ -8,5 +8,6 @@ namespace MyDebtonator.Helpers
     public interface IPageViewModel
     {
         string Name { get; }
+        string Title { get; set; }
     }
 }

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace MyDebtonator.Views
 {
     /// <summary>
-    /// Interaction logic for BlankWindow.xaml
+    /// Interaction logic for ApplicationView.xaml
     /// </summary>
-    public partial class BlankWindow : Window
+    public partial class ApplicationView : Window
     {
-        public BlankWindow()
+        public ApplicationView()
         {
             InitializeComponent();
         }
