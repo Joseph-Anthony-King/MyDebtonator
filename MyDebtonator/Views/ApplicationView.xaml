@@ -46,12 +46,14 @@
                     Name="mniCalculator" 
                     Header="Calculator" 
                     Foreground="Black" 
-                    FontSize="16" />
+                    FontSize="16" 
+                    Command="{Binding OpenCalculatorCommand}"/>
                 <MenuItem 
                     Name="mniAbout"
                     Header="About My Debtonator"
                     Foreground="Black"
-                    FontSize="16" />
+                    FontSize="16" 
+                    Command="{Binding AboutMessageCommand}"/>
                 <Separator />
                 <MenuItem 
                     Name="mniExitApplication" 
