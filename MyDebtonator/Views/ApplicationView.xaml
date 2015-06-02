@@ -63,6 +63,18 @@
                     Command="{Binding ExitApplicationCommand}"/>
             </MenuItem>
         </Menu>
+        <Label  
+            Name="lblCurrentView"
+            Content="[PlaceHolder]" 
+            Height="50"  
+            Width="300" 
+            HorizontalAlignment="Left" 
+            HorizontalContentAlignment="Left" 
+            VerticalAlignment="Top" 
+            VerticalContentAlignment="Center"
+            Foreground="WhiteSmoke" 
+            FontSize="16" 
+            Margin="68,0,0,0" />
         
         <ContentControl />
     </Grid>
