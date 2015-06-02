@@ -61,6 +61,7 @@
     <Compile Include="Models\PaymentPlanModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UserRepository.cs" />
+    <Compile Include="ViewModels\ApplicationViewModel.cs" />
     <Compile Include="Views\ApplicationView.xaml.cs">
       <DependentUpon>ApplicationView.xaml</DependentUpon>
     </Compile>
@@ -100,9 +101,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Images\Debtonator.gif" />
   </ItemGroup>
