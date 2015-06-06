@@ -260,7 +260,7 @@ namespace MyDebtonator.Models
 
         #endregion
 
-        #region Methods
+        #region AppMethods
 
         /* If the monthly payment is provided this method calculates the amount of months
          * it will take to pay this loan off.

@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Input;
 using MyDebtonator.Helpers;
+using MyDebtonator.Models;
 
 namespace MyDebtonator.ViewModels
 {
@@ -15,6 +16,9 @@ namespace MyDebtonator.ViewModels
         private ICommand _openCalculatorCommand;
         private ICommand _aboutMessageCommand;
         private ICommand _exitApplicationCommand;
+
+        private IPageViewModel _currentPageViewModel;
+        private List<IPageViewModel> _pageViewModel;
 
         #endregion
 
@@ -56,36 +60,48 @@ namespace MyDebtonator.ViewModels
             }
         }
 
+        public IPageViewModel CurrentPageViewModel
+        {
+            get
+            {
+                return _currentPageViewModel;
+            }
+            set
+            {
+                if (_currentPageViewModel != value)
+                {
+                    _currentPageViewModel = value;
+                    OnPropertyChanged("CurrentPageViewModel");
+                }
+            }
+        }
+
+        public List<IPageViewModel> PageViewModels
+        {
+            get
+            {
+                if (_pageViewModel == null)
+                {
+                    _pageViewModel = new List<IPageViewModel>();
+                }
+
+                return _pageViewModel;
+            }
+        }
+
         #endregion
 
         #region Constructor
 
         public ApplicationViewModel()
         {
-            OpenCalculatorCommand = new RelayCommand(OpenCalculator);
-            AboutMessageCommand = new RelayCommand(AboutMessage);
-            ExitApplicationCommand = new RelayCommand(ExitApplication);
-        }
+            OpenCalculatorCommand = new RelayCommand(ApplicationMethods.OpenCalculator);
+            AboutMessageCommand = new RelayCommand(ApplicationMethods.AboutMessage);
+            ExitApplicationCommand = new RelayCommand(ApplicationMethods.ExitApplication);
 
-        #endregion
+            PageViewModels.Add(new LoginViewModel());
 
-        #region Methods
-
-        public void OpenCalculator(object obj)
-        {
-            System.Diagnostics.Process.Start("Calc");
-        }
-
-        public void AboutMessage(object obj)
-        {
-            string message = "My Debtonator \n\nProgrammed by Joseph King\n\nTitle by Carla Olivares\n\n© 2015";
-
-            MessageBox.Show(message, "About My Debtonator", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        public void ExitApplication(object obj)
-        {
-            Application.Current.Shutdown();
+            CurrentPageViewModel = PageViewModels[0];
         }
 
         #endregion

@@ -1,0 +1,94 @@
+﻿<UserControl x:Class="MyDebtonator.Views.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ViewModel="clr-namespace:MyDebtonator.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="678" 
+             d:DesignWidth="746">
+    <UserControl.DataContext>
+        <ViewModel:LoginViewModel/>
+    </UserControl.DataContext>
+    <Grid
+        Name="grdLoginView"
+        Margin="0,50,0,0"
+        HorizontalAlignment="Left"
+        VerticalAlignment="Top">
+        <Label
+            Content="Login:"
+            Height="50"
+            Width="746"
+            FontSize="16"
+            Margin="0,95,0,0" 
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            HorizontalContentAlignment="Center"
+            VerticalContentAlignment="Center" />
+        <StackPanel 
+            Height="50"
+            Width="400"
+            Margin="176,150,170,428"
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            Visibility="Visible">
+            <Label
+                Content="User Name:"
+                Height="50"
+                Width="90"
+                FontSize="16"
+                Margin="0,0,0,0"
+                VerticalContentAlignment="Center" />
+            <TextBox
+                Name="txtUserName"
+                Height="30"
+                Width="250"
+                Margin="0,0,0,0"
+                FontSize="16" />
+        </StackPanel>
+        <StackPanel 
+            Height="50"
+            Width="400" 
+            Margin="176,205,170,373" 
+            Orientation="Horizontal">
+            <Label
+                Content="  Password:"
+                Height="50" 
+                Width="90" 
+                FontSize="16" 
+                Margin="0,0,0,0"
+                VerticalContentAlignment="Center" />
+            <PasswordBox 
+                Name="txtPassword"
+                Height="30"
+                Width="250" 
+                Margin="0,0,0,0"
+                FontSize="16" />
+        </StackPanel>
+        <StackPanel 
+            Height="40"
+            Width="450" 
+            Margin="150,281,144,307" 
+            Orientation="Horizontal"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <Button
+                Name="btnLogin" 
+                Content="_Login" 
+                Width="150" 
+                FontSize="16" />
+            <Button
+            	x:Name="btnCreateUser"
+            	Content="_Create User"
+            	Width="150"
+            	FontSize="16" />
+            <Button
+            	x:Name="btnExit"
+            	Content="E_xit"
+            	Width="150"
+            	FontSize="16"
+                Command="{Binding ExitApplicationCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

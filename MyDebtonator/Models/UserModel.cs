@@ -207,7 +207,7 @@ namespace MyDebtonator.Models
 
         #endregion
 
-        #region Methods
+        #region AppMethods
 
         // Adds a plan.
         public void AddPlan(PaymentPlanModel plan)

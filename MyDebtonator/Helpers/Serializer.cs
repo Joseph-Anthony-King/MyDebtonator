@@ -18,7 +18,7 @@ namespace MyDebtonator.Helpers
 
         #endregion
 
-        #region Methods
+        #region AppMethods
 
         public void SerializeRepository(string fileName, UserRepository userRepository)
         {
